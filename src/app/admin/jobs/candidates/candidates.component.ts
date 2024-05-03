@@ -32,6 +32,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { JobsListService } from '../jobs-list/jobs-list.service';
 import Swal from 'sweetalert2';
+import { environment } from 'environments/environment.development';
 
 
 @Component({
@@ -75,7 +76,7 @@ export class CandidatesComponent
   id?: string;
   candidates?: Candidates;
   jobTitles: { [key: string]: string } = {}; 
-  baseUrl: string = 'http://localhost:3000/files'; // URL de base de votre serveur
+  baseUrl: string = environment.apiUrl+'/files'; // URL de base de votre serveur
   c!: number; // Déclaration de la variable i
   rol!: Candidates; 
   constructor(
@@ -377,8 +378,8 @@ export class ExampleDataSource extends DataSource<Candidates> {
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
           this.filteredData.forEach(candidate => {
-            if (!candidate.cv.startsWith('http://localhost:3000/files/uploads')) {
-              candidate.cv = `http://localhost:3000/files/${candidate.cv}`;
+            if (!candidate.cv.startsWith(environment.apiUrl+'/files/uploads')) {
+              candidate.cv = environment.apiUrl+`/files/${candidate.cv}`;
             }
           });  
         // Sort filtered data

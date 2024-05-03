@@ -5,12 +5,13 @@ import { map } from 'rxjs/operators';
 // import { PROJECTS } from "./project.data";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
+import { environment } from 'environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService extends UnsubscribeOnDestroyAdapter {
-  private baseUrl = 'http://localhost:3000/project'; 
+  private baseUrl = environment.apiUrl+'/project'; 
   private trash: Set<number> = new Set([]); // trashed projects' id; set is better for unique ids
   // private _projects: BehaviorSubject<object[]> = new BehaviorSubject([]);
   private _projects = new BehaviorSubject<object[]>([]);

@@ -5,5 +5,5 @@ export const environment = {
     url: 'http://localhost:3000', 
     options: {}
   },
-  apiUrl: 'http://localhost:4200',
+  apiUrl: 'http://:4200',
 };

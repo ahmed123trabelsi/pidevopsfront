@@ -4,6 +4,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { environment } from 'environments/environment.development';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -76,7 +77,7 @@ private retrieveUserName(): string {
 
 
   getPayslipData(payrollId: string) {
-    this.http.get<any>('http://localhost:3000/payroll/getPayrollWithPayP/' + payrollId)
+    this.http.get<any>(environment.apiUrl+'/payroll/getPayrollWithPayP/' + payrollId)
       .subscribe(
         (response) => {
           this.payslipData = response;

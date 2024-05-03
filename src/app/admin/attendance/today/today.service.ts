@@ -3,12 +3,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Today } from './today.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UnsubscribeOnDestroyAdapter } from '@shared';
+import { environment } from 'environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodayService extends UnsubscribeOnDestroyAdapter {
-  private readonly API_URL = 'http://localhost:3000/Conge';
+  private readonly API_URL = environment.apiUrl+'/Conge';
   isTblLoading = true;
   dataChange: BehaviorSubject<Today[]> = new BehaviorSubject<Today[]>([]);
   // Temporarily stores data from dialogs

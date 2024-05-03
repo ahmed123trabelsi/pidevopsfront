@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 import { Departement } from "./departement.model";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { an } from "@fullcalendar/core/internal-common";
+import { environment } from "environments/environment.development";
 
 @Injectable({
     providedIn: 'root',
   })
   export class EmployeesService extends UnsubscribeOnDestroyAdapter {
-    private readonly API_URL = 'http://localhost:3000/departements';
+    private readonly API_URL = environment.apiUrl+'/departements';
     isTblLoading = true;
     dataChange: BehaviorSubject<Departement[]> = new BehaviorSubject<Departement[]>(
       []

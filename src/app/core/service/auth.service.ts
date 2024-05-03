@@ -7,6 +7,7 @@ import { Auth } from '@core/models/auth';
 import { tap } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from 'environments/environment.development';
 
 
 @Injectable({
@@ -67,7 +68,7 @@ export class AuthService {
   //   this.currentUserSubject.next(this.currentUserValue);
   //   return of({ success: false });
   // }
-  private apiUrl = 'http://localhost:3000/auth'; // Remplacez cette URL par l'URL de votre backend
+  private apiUrl =  environment.apiUrl+'/auth'; // Remplacez cette URL par l'URL de votre backend
   logout() {
     // Supprimer les cookies
     this.cookieService.deleteAll();
